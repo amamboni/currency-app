@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        // Integrates Laravel Pint into your VSCode projects for automatic code formatting
+        "open-southeners.laravel-pint",
+        // Code formatter using prettier
+        "esbenp.prettier-vscode",
+        // Intelligent Tailwind CSS tooling for VS Code
+        "bradlc.vscode-tailwindcss",
+        // Vue Language Features
+        "vue.volar"
+    ]
+}
