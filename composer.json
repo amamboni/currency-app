@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "amamboni/currency-app",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "A web app that converts currency.",
     "keywords": [
         "laravel",
         "framework"
