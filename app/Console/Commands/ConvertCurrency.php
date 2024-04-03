@@ -24,7 +24,7 @@ class ConvertCurrency extends Command
     /**
      * Execute the console command.
      */
-    public function handle(CurrencyAction $currencyAction)
+    public function handle(CurrencyAction $currencyAction): void
     {
         $fromCurrency = $this->ask('Convert from which currency?');
         $toCurrency = $this->ask('Convert to which currency?');
