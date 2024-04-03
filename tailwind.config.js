@@ -1,5 +1,6 @@
-import defaultTheme from 'tailwindcss/defaultTheme'
 import forms from '@tailwindcss/forms'
+import defaultTheme from 'tailwindcss/defaultTheme'
+import plugin from 'tailwindcss/plugin'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -18,5 +19,11 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [
+        forms,
+        plugin(function ({ addVariant }) {
+            addVariant('first-child', '&>*:first-child')
+            addVariant('last-child', '&>*:last-child')
+        }),
+    ],
 }

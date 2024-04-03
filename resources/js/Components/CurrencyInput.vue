@@ -1,0 +1,41 @@
+<script setup lang="ts">
+import AddonInput from './AddonInput.vue'
+import SelectInput from './SelectInput.vue'
+import TextInput from './TextInput.vue'
+
+interface Props {
+    options: Record<string, string>
+}
+
+withDefaults(defineProps<Props>(), {
+    options: () => ({}),
+})
+
+interface Emits {
+    (e: 'change', value?: string | number): void
+}
+
+const emit = defineEmits<Emits>()
+
+const value = defineModel<number | string>('value')
+const currency = defineModel<string>('currency')
+
+/**
+ * Handle on input of value
+ */
+const onValueInput = () => {
+    emit('change', value.value)
+}
+</script>
+
+<template>
+    <AddonInput>
+        <template #input>
+            <TextInput type="number" placeholder="0.00" v-model="value" @input="onValueInput" />
+        </template>
+
+        <template #addon>
+            <SelectInput v-model="currency" :options="options" />
+        </template>
+    </AddonInput>
+</template>

@@ -1,23 +1,11 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-
-const model = defineModel<string>({ required: true })
-
-const input = ref<HTMLInputElement | null>(null)
-
-onMounted(() => {
-    if (input.value?.hasAttribute('autofocus')) {
-        input.value?.focus()
-    }
-})
-
-defineExpose({ focus: () => input.value?.focus() })
+const model = defineModel<string | number>()
 </script>
 
 <template>
     <input
         ref="input"
         v-model="model"
-        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+        class="border-gray-300 focus:border-gray-500 focus:ring-gray-500 rounded-md shadow-sm"
     />
 </template>
