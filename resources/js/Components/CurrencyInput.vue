@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { sortObjectValues } from '@/utils/object'
+import { computed } from 'vue'
 import AddonInput from './AddonInput.vue'
 import SelectInput from './SelectInput.vue'
 import TextInput from './TextInput.vue'
@@ -7,7 +9,7 @@ interface Props {
     options: Record<string, string>
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
     options: () => ({}),
 })
 
@@ -19,6 +21,11 @@ const emit = defineEmits<Emits>()
 
 const value = defineModel<number | string>('value')
 const currency = defineModel<string>('currency')
+
+const options = computed(() => ({
+    '': 'Select',
+    ...sortObjectValues(props.options),
+}))
 
 /**
  * Handle on input of value

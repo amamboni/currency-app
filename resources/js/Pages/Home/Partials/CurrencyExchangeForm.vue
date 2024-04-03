@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CurrencyInput from '@/Components/CurrencyInput.vue'
+import InputLabel from '@/Components/InputLabel.vue'
 import { parseBigNumbers } from '@/utils/number'
 import { useForm } from '@inertiajs/vue3'
 import { ref, watch } from 'vue'
@@ -105,15 +106,18 @@ const setFromValue = () => {
 </script>
 
 <template>
-    <div class="flex justify-center">
-        <div class="flex flex-col gap-4">
+    <div class="grid md:grid-cols-2 gap-4">
+        <div>
+            <InputLabel> Amount </InputLabel>
             <CurrencyInput
                 v-model:value="fromValue"
                 v-model:currency="form.fromCurrency"
                 :options="currencies"
                 @change="onFromValueChange"
             />
-
+        </div>
+        <div>
+            <InputLabel> Converted To </InputLabel>
             <CurrencyInput
                 v-model:value="toValue"
                 v-model:currency="form.toCurrency"

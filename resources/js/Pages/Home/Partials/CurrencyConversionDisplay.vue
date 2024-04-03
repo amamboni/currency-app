@@ -1,26 +1,28 @@
 <script setup lang="ts">
-import { parseBigNumbers } from '@/utils/number'
-
 interface Props {
+    currencies?: Record<string, string>
     fromCurrency?: string
     toCurrency?: string
-    rate?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
+    currencies: () => ({}),
     fromCurrency: '',
     toCurrency: '',
-    rate: undefined,
 })
+
+/**
+ * Get the currency label from currencies
+ */
+const getCurrencyLabel = (currency: string) => props.currencies?.[currency]
 </script>
 
 <template>
     <div>
         <template v-if="fromCurrency && toCurrency">
             <h3 class="text-lg">
-                1 <strong>{{ fromCurrency.toUpperCase() }}</strong> =
-                {{ parseBigNumbers(props.rate) }}
-                <strong>{{ toCurrency.toUpperCase() }}</strong>
+                Converting <strong>{{ getCurrencyLabel(fromCurrency) }}</strong> to
+                <strong>{{ getCurrencyLabel(toCurrency) }}</strong>
             </h3>
         </template>
     </div>

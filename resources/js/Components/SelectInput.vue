@@ -1,27 +1,23 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
 interface Props {
     options: Record<string, string>
 }
 
 const model = defineModel<string>()
 
-const props = withDefaults(defineProps<Props>(), {
-    options: () => ({ '': 'Select Currency' }),
+withDefaults(defineProps<Props>(), {
+    options: () => ({}),
 })
-
-const options = computed(() => ({ '': 'Select Currency', ...props.options }))
 </script>
 
 <template>
     <select
         v-model="model"
-        class="border-gray-300 focus:border-gray-500 focus:ring-gray-500 rounded-md shadow-sm"
+        class="text-xl font-bold border-gray-300 truncate focus:border-gray-500 focus:ring-gray-500 rounded-md shadow-sm"
     >
         <template v-for="(option, key) in options" :key="key">
-            <option :value="key">
-                {{ option || key }}
+            <option v-if="option" :value="key">
+                {{ key === '' ? option : key.toUpperCase() }}
             </option>
         </template>
     </select>
