@@ -30,9 +30,8 @@ class ConvertCurrency extends Command
         $toCurrency = $this->ask('Convert to which currency?');
         $value = $this->ask('What is the amount?');
 
-        $exchangeRate = $currencyAction->getExchangeRate($fromCurrency, $toCurrency);
-        $converted = $value * $exchangeRate;
+        $amount = $currencyAction->getConvertedAmount($fromCurrency, $toCurrency, $value);
 
-        $this->info($converted);
+        $this->info($amount);
     }
 }

@@ -97,4 +97,14 @@ class CurrencyAction
 
         return $rate;
     }
+
+    /**
+     * Get the converted currency amount
+     */
+    public function getConvertedAmount(?string $fromCurrency, ?string $toCurrency, ?float $amount): ?float
+    {
+        $rate = $this->getExchangeRate($fromCurrency, $toCurrency);
+
+        return $rate * $amount;
+    }
 }
