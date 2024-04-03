@@ -57,5 +57,5 @@ What is the amount?:
 This project uses the Exchange Rate API from [https://github.com/fawazahmed0/exchange-api](https://github.com/fawazahmed0/exchange-api)
 
 ### Preview
-![image](https://github.com/amamboni/currency-app/assets/87349550/2328494d-4592-4c08-ac72-203842fb9d73)
 
+![Preview](public/preview.png 'Landing Page')
