@@ -24,7 +24,7 @@
 
 ### Web App
 
-You can access the web app in `http://localhost:8000` after executing the serve command
+You can access the web app in [http://localhost:8000](http://localhost:8000) after executing the serve command
 
 ### Command Line
 
