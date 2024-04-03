@@ -6,11 +6,20 @@
 -   Composer [https://getcomposer.org/download](https://getcomposer.org/download)
 -   Node/NPM [https://nodejs.org/en/download](https://nodejs.org/en/download/)
 
+### PHP Extensions to Enable
+
+-   zip
+-   fileinfo
+-   pdo_sqlite
+
 ### Installation
 
 1. Install PHP Packages `composer install`
 1. Install Node/JavaScript packages `npm install`
 1. Build frontend assets `npm run build`
+1. Copy .env.example to .env `cp .env.example .env`
+1. Generate application key `php artisan key:generate`
+1. Run migration `php artisan migrate`
 1. Serve the application on the PHP development server `php artisan serve`
 
 ### Web App
