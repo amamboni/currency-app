@@ -2,6 +2,8 @@
 
 namespace App\Actions;
 
+use App\Exceptions\InvalidFromCurrencyException;
+use App\Exceptions\InvalidToCurrencyException;
 use App\Traits\HasCache;
 use App\Utils\CurrencyApi;
 
@@ -88,12 +90,22 @@ class CurrencyAction
         if ($this->isStoringToCache() || ! $this->cacheKeyExists($cacheKey)) {
             $rates = $this->currencyApi->getExchangeRates($fromCurrency);
 
+            // If key not found, throw exception
+            if (! isset($rates[$fromCurrency])) {
+                throw new InvalidFromCurrencyException($fromCurrency);
+            }
+
             $this->cacheForever($cacheKey, $rates[$fromCurrency]);
         }
 
         $rates = $this->cacheGet($cacheKey);
 
-        $rate = $rates[$toCurrency] ?? 0;
+        // If key not found, throw exception
+        if (! isset($rates[$toCurrency])) {
+            throw new InvalidToCurrencyException($toCurrency);
+        }
+
+        $rate = $rates[$toCurrency];
 
         return $rate;
     }
