@@ -1,5 +1,7 @@
 # Currency App
 
+A web app that converts currency.
+
 ### Requirements
 
 -   PHP [https://www.php.net/downloads.php](https://www.php.net/downloads.php)
