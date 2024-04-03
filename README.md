@@ -9,7 +9,7 @@
 ### Installation
 
 1. Install PHP Packages `composer install`
-1. Install Node/JavaScript package `npm install`
+1. Install Node/JavaScript packages `npm install`
 1. Build frontend assets `npm run build`
 1. Serve the application on the PHP development server `php artisan serve`
 
@@ -43,6 +43,6 @@ What is the amount?:
 563.4103132
 ```
 
-### API
+### External API
 
 This project uses the Exchange Rate API from [https://github.com/fawazahmed0/exchange-api](https://github.com/fawazahmed0/exchange-api)
