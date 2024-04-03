@@ -38,7 +38,7 @@ const onValueInput = () => {
 <template>
     <AddonInput>
         <template #input>
-            <TextInput type="number" placeholder="0.00" v-model="value" @input="onValueInput" />
+            <TextInput v-model="value" type="number" placeholder="0.00" @input="onValueInput" />
         </template>
 
         <template #addon>
