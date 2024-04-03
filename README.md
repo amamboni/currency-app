@@ -2,7 +2,7 @@
 
 ### Requirements
 
--   Composer [https://getcomposer.org](https://getcomposer.org/)
+-   Composer [https://getcomposer.org/download](https://getcomposer.org/download)
 -   PHP [https://www.php.net/downloads.php](https://www.php.net/downloads.php)
 -   Node/NPM [https://nodejs.org/en/download](https://nodejs.org/en/download/)
 
