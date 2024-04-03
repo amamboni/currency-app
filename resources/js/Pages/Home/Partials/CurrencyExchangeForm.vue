@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import CurrencyInput from '@/Components/CurrencyInput.vue'
+import IconButton from '@/Components/IconButton.vue'
+import IconSwap from '@/Icons/IconSwap.vue'
 import { useForm } from '@inertiajs/vue3'
 import { ref, watch } from 'vue'
 
@@ -30,6 +32,7 @@ const form = useForm<Form>({
 const fromValue = ref<number | undefined>()
 const toValue = ref<number | undefined>()
 const updatedCurrency = ref<'toCurrency' | 'fromCurrency' | undefined>()
+const swapped = ref(false)
 
 /**
  * Submit form and make a get request
@@ -99,22 +102,35 @@ const setToValue = () => {
 const setFromValue = () => {
     fromValue.value = form.fromCurrency && toValue.value ? +toValue.value / props.rate : undefined
 }
+
+/**
+ * Trigger swapping of currency
+ */
+const swapCurrencies = () => {
+    swapped.value = !swapped.value
+}
 </script>
 
 <template>
-    <div class="flex flex-col gap-4">
-        <CurrencyInput
-            v-model:value="fromValue"
-            v-model:currency="form.fromCurrency"
-            :options="currencies"
-            @change="onFromValueChange"
-        />
+    <div class="flex gap-4 items-center justify-center">
+        <div class="flex flex-col gap-4" :class="{ 'flex-col-reverse': swapped }">
+            <CurrencyInput
+                v-model:value="fromValue"
+                v-model:currency="form.fromCurrency"
+                :options="currencies"
+                @change="onFromValueChange"
+            />
 
-        <CurrencyInput
-            v-model:value="toValue"
-            v-model:currency="form.toCurrency"
-            :options="currencies"
-            @change="onToValueChange"
-        />
+            <CurrencyInput
+                v-model:value="toValue"
+                v-model:currency="form.toCurrency"
+                :options="currencies"
+                @change="onToValueChange"
+            />
+        </div>
+
+        <IconButton type="button" @click="swapCurrencies">
+            <IconSwap class="w-6 h-6" />
+        </IconButton>
     </div>
 </template>
