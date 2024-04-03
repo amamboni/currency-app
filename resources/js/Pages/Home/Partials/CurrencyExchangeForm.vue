@@ -44,11 +44,11 @@ const submitForm = () => {
         }),
         {
             onSuccess() {
-                if (updatedCurrency.value === 'fromCurrency') {
+                if (updatedCurrency.value === 'fromCurrency' && toValue.value) {
                     setFromValue()
                 }
 
-                if (updatedCurrency.value === 'toCurrency') {
+                if (updatedCurrency.value === 'toCurrency' && fromValue.value) {
                     setToValue()
                 }
             },
