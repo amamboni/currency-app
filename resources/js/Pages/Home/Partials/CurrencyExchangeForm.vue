@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CurrencyInput from '@/Components/CurrencyInput.vue'
+import { parseBigNumbers } from '@/utils/number'
 import { useForm } from '@inertiajs/vue3'
 import { ref, watch } from 'vue'
 
@@ -27,8 +28,8 @@ const form = useForm<Form>({
     toCurrency: props.toCurrency,
 })
 
-const fromValue = ref<number | undefined>()
-const toValue = ref<number | undefined>()
+const fromValue = ref<number | string | undefined>()
+const toValue = ref<number | string | undefined>()
 const updatedCurrency = ref<'toCurrency' | 'fromCurrency' | undefined>()
 
 /**
@@ -90,14 +91,16 @@ const onFromValueChange = () => {
  * Set the value of toValue
  */
 const setToValue = () => {
-    toValue.value = form.toCurrency && fromValue.value ? +fromValue.value * props.rate : undefined
+    const result = form.toCurrency && fromValue.value ? +fromValue.value * props.rate : undefined
+    toValue.value = parseBigNumbers(result)
 }
 
 /**
  * Set the value of fromValue
  */
 const setFromValue = () => {
-    fromValue.value = form.fromCurrency && toValue.value ? +toValue.value / props.rate : undefined
+    const result = form.fromCurrency && toValue.value ? +toValue.value / props.rate : undefined
+    fromValue.value = parseBigNumbers(result)
 }
 </script>
 
