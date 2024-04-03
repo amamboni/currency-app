@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\CurrencyAction;
-use Illuminate\Http\Request;
+use App\Http\Requests\CurrencyRequest;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -12,7 +12,7 @@ class HomeController extends Controller
     /**
      * Display the index page.
      */
-    public function index(Request $request, CurrencyAction $currencyAction): Response
+    public function index(CurrencyRequest $request, CurrencyAction $currencyAction): Response
     {
         $fromCurrency = $request->fromCurrency ?? '';
         $toCurrency = $request->toCurrency ?? '';
